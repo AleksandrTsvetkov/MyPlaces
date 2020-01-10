@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F7637A223C8C83900B69DAF /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7637A123C8C83900B69DAF /* MainTableViewCell.swift */; };
 		1FFDD7E523C5F3370091BA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDD7E423C5F3370091BA7C /* AppDelegate.swift */; };
 		1FFDD7E723C5F3370091BA7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDD7E623C5F3370091BA7C /* SceneDelegate.swift */; };
 		1FFDD7E923C5F3370091BA7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDD7E823C5F3370091BA7C /* MainViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F7637A123C8C83900B69DAF /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		1FFDD7E123C5F3370091BA7C /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFDD7E423C5F3370091BA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFDD7E623C5F3370091BA7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				1FFDD7E423C5F3370091BA7C /* AppDelegate.swift */,
 				1FFDD7E623C5F3370091BA7C /* SceneDelegate.swift */,
+				1F7637A123C8C83900B69DAF /* MainTableViewCell.swift */,
 				1FFDD7E823C5F3370091BA7C /* MainViewController.swift */,
 				1FFDD7EA23C5F3370091BA7C /* Main.storyboard */,
 				1FFDD7ED23C5F33B0091BA7C /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 			files = (
 				1FFDD7E923C5F3370091BA7C /* MainViewController.swift in Sources */,
 				1FFDD7E523C5F3370091BA7C /* AppDelegate.swift in Sources */,
+				1F7637A223C8C83900B69DAF /* MainTableViewCell.swift in Sources */,
 				1FFDD7E723C5F3370091BA7C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
