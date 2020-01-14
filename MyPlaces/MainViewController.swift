@@ -7,39 +7,40 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
     
-    let restaurantNames = [
-           "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
-           "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
-           "Speak Easy", "Morris Pub", "Вкусные истории",
-           "Классик", "Love&Life", "Шок", "Бочка"
-       ]
+    var places: Results<Place>!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurantNames.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return places.isEmpty ? 0 : places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainTableViewCell
-        cell.nameLabel?.text = restaurantNames[indexPath.row]
-        cell.imageOfPlace?.image = UIImage(named: restaurantNames[indexPath.row])
+        let place = places[indexPath.row]
+        cell.nameLabel?.text = place.name
+        cell.locationLabel?.text = place.location
+        cell.typeLabel?.text = place.type
+        cell.imageOfPlace.image = UIImage(data: place.imageData!)
         cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
         cell.imageOfPlace?.clipsToBounds = true
         return cell
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        places = realm.objects(Place.self)
     }
-
-
+    
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        guard let newPlaceVC = segue.source as? NewPlaceTableViewController else { return }
+        newPlaceVC.saveNewPlace()
+        tableView.reloadData()
+    }
+    
 }
 
