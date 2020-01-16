@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="phS-4x-gbs">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="76" width="320" height="492"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                 <prototypes>
@@ -90,17 +90,38 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="E5i-C5-msR"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JZQ-fQ-7og">
+                                <rect key="frame" x="0.0" y="44" width="320" height="32"/>
+                                <color key="backgroundColor" red="0.99999052290000001" green="0.9999936223" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" red="0.38314193489999998" green="0.65778970719999996" blue="0.98827570679999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="sortSelection:" destination="BYZ-38-t0r" eventType="valueChanged" id="gei-0I-5Cd"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="phS-4x-gbs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FiH-a0-dz1"/>
+                            <constraint firstItem="JZQ-fQ-7og" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="G8B-BG-5aN"/>
                             <constraint firstItem="phS-4x-gbs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ds4-GO-c2E"/>
+                            <constraint firstItem="JZQ-fQ-7og" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gae-7n-uC1"/>
+                            <constraint firstItem="phS-4x-gbs" firstAttribute="top" secondItem="JZQ-fQ-7og" secondAttribute="bottom" constant="1" id="kpS-Wy-0L9"/>
                             <constraint firstItem="phS-4x-gbs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="nvh-VA-stV"/>
                             <constraint firstItem="phS-4x-gbs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pAF-Yn-Ov7"/>
+                            <constraint firstItem="JZQ-fQ-7og" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="skz-Aa-IGP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" id="8ZR-Eo-wPl">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="A3m-8w-Cdj">
+                            <connections>
+                                <action selector="reversedSorting:" destination="BYZ-38-t0r" id="x1X-ES-CgM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6T4-V9-OJA">
                             <connections>
                                 <segue destination="jHZ-1t-Qee" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="60s-Wk-E1i"/>
@@ -108,12 +129,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedSortingButton" destination="A3m-8w-Cdj" id="oQH-0i-aoa"/>
+                        <outlet property="segmentedControl" destination="JZQ-fQ-7og" id="uIA-wz-73l"/>
                         <outlet property="tableView" destination="phS-4x-gbs" id="7tY-pt-aC7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-75" y="475"/>
+            <point key="canvasLocation" x="-75" y="474.29577464788736"/>
         </scene>
         <!--New Place-->
         <scene sceneID="Ury-ju-I9s">
@@ -135,7 +158,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="nNs-iE-uAS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="250.00000000000006"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,8 +350,9 @@
         <!--Navigation Controller-->
         <scene sceneID="Gqk-qp-biL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jHZ-1t-Qee" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navController" automaticallyAdjustsScrollViewInsets="NO" id="jHZ-1t-Qee" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="uoR-ez-3oC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="noM-fq-IcE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -344,6 +368,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
     </resources>
 </document>

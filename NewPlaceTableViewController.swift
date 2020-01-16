@@ -23,6 +23,7 @@ class NewPlaceTableViewController: UITableViewController {
     }
     
     var imageIsChanged = false
+    var currentPlace: Place?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,20 @@ class NewPlaceTableViewController: UITableViewController {
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         placeLocation.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         placeType.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        guard let place = currentPlace else { return }
+        imageIsChanged = true
+        placeName.text = place.name
+        placeLocation.text = place.location
+        placeType.text = place.type
+        placeImage.image = UIImage(data: place.imageData!)
+        placeImage.contentMode = .scaleAspectFill
+        saveButton.isEnabled = true
+        title = place.name
     }
     
-    func saveNewPlace() {
+    func savePlace() {
         var image: UIImage?
-
+        
         if imageIsChanged {
             image = placeImage.image
         } else {
@@ -46,7 +56,16 @@ class NewPlaceTableViewController: UITableViewController {
                              location: placeLocation.text!,
                              type: placeType.text!,
                              imageData: imageData)
-        StorageManager.saveObject(newPlace)
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.location = newPlace.location
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+            StorageManager.saveObject(newPlace)
+        }
     }
     
     @objc private func textFieldChanged() {
