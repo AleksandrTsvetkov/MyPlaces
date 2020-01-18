@@ -7,31 +7,44 @@
 //
 
 import UIKit
+import Cosmos
 
 class NewPlaceTableViewController: UITableViewController {
+    //MARK: OUTLETS
+    @IBOutlet weak var cosmosView: CosmosView!
+    @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var placeImage: UIImageView!
     @IBOutlet weak var placeName: UITextField!
     @IBOutlet weak var placeLocation: UITextField!
     @IBOutlet weak var placeType: UITextField!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    //MARK: ACTIONS
     @IBAction func typingDone(_ sender: UITextField) {
         sender.resignFirstResponder()
     }
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
+    //MARK: PROPERTIES
     var imageIsChanged = false
-    var currentPlace: Place?
-    
+    var currentPlace: Place!
+    var currentRating = 0.0
+    //MARK: FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         placeLocation.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         placeType.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.height, height: 1.0))
+        cosmosView.settings.fillMode = .half
+        cosmosView.didTouchCosmos = { rating in
+            self.currentRating = rating
+        }
+        
+        //For editing
         guard let place = currentPlace else { return }
         imageIsChanged = true
         placeName.text = place.name
@@ -39,8 +52,10 @@ class NewPlaceTableViewController: UITableViewController {
         placeType.text = place.type
         placeImage.image = UIImage(data: place.imageData!)
         placeImage.contentMode = .scaleAspectFill
+        cosmosView.rating = place.rating
         saveButton.isEnabled = true
         title = place.name
+    
     }
     
     func savePlace() {
@@ -55,13 +70,15 @@ class NewPlaceTableViewController: UITableViewController {
         let newPlace = Place(name: placeName.text!,
                              location: placeLocation.text!,
                              type: placeType.text!,
-                             imageData: imageData)
+                             imageData: imageData,
+                             rating: currentRating)
         if currentPlace != nil {
             try! realm.write {
                 currentPlace?.name = newPlace.name
                 currentPlace?.location = newPlace.location
                 currentPlace?.type = newPlace.type
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)

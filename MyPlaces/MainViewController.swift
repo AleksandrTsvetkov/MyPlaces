@@ -27,26 +27,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-            return filteredPlaces.count
-        }
-        return places.isEmpty ? 0 : places.count
+        return isFiltering ? filteredPlaces.count : places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainTableViewCell
-        var place = Place()
-        if isFiltering {
-            place = filteredPlaces[indexPath.row]
-        } else {
-            place = places[indexPath.row]
-        }
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
+        
         cell.nameLabel?.text = place.name
         cell.locationLabel?.text = place.location
         cell.typeLabel?.text = place.type
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
-        cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
-        cell.imageOfPlace?.clipsToBounds = true
+        cell.cosmosView.rating = place.rating
         return cell
     }
     
@@ -79,13 +71,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let place: Place
-        if isFiltering {
-            place = filteredPlaces[indexPath.row]
-        } else {
-            place = places[indexPath.row]
-        }
-        
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
         guard let navigationController = storyboard?.instantiateViewController(withIdentifier: "navController") as? UINavigationController else { return }
         guard let destination = navigationController.topViewController as? NewPlaceTableViewController else { return }
         navigationController.modalPresentationStyle = .fullScreen
@@ -125,7 +111,7 @@ extension MainViewController: UISearchResultsUpdating {
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
+        filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@ OR type CONTAINS[c] %@", searchText, searchText, searchText)
         tableView.reloadData()
     }
     

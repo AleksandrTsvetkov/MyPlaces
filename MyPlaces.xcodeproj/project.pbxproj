@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F21251623D0AD0D001F4FEB /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21251523D0AD0D001F4FEB /* RatingControl.swift */; };
 		1F6F62C123CD5E7F002061BF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F62C023CD5E7F002061BF /* StorageManager.swift */; };
 		1F7637A223C8C83900B69DAF /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7637A123C8C83900B69DAF /* MainTableViewCell.swift */; };
 		1F7637A423CBD68E00B69DAF /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7637A323CBD68E00B69DAF /* PlaceModel.swift */; };
 		1F7637A623CCC32200B69DAF /* NewPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7637A523CCC32200B69DAF /* NewPlaceTableViewController.swift */; };
+		1FF2B51723D3BAD900F7F88D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF2B51623D3BAD900F7F88D /* MapViewController.swift */; };
 		1FFDD7E523C5F3370091BA7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDD7E423C5F3370091BA7C /* AppDelegate.swift */; };
 		1FFDD7E723C5F3370091BA7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDD7E623C5F3370091BA7C /* SceneDelegate.swift */; };
 		1FFDD7E923C5F3370091BA7C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDD7E823C5F3370091BA7C /* MainViewController.swift */; };
@@ -21,10 +23,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F21251523D0AD0D001F4FEB /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		1F6F62C023CD5E7F002061BF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		1F7637A123C8C83900B69DAF /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		1F7637A323CBD68E00B69DAF /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		1F7637A523CCC32200B69DAF /* NewPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		1FF2B51623D3BAD900F7F88D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1FFDD7E123C5F3370091BA7C /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFDD7E423C5F3370091BA7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FFDD7E623C5F3370091BA7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,15 +75,17 @@
 		1FFDD7E323C5F3370091BA7C /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				1F7637A523CCC32200B69DAF /* NewPlaceTableViewController.swift */,
 				1FFDD7E423C5F3370091BA7C /* AppDelegate.swift */,
 				1FFDD7E623C5F3370091BA7C /* SceneDelegate.swift */,
 				1F6F62C023CD5E7F002061BF /* StorageManager.swift */,
 				1F7637A123C8C83900B69DAF /* MainTableViewCell.swift */,
 				1FFDD7E823C5F3370091BA7C /* MainViewController.swift */,
+				1F7637A523CCC32200B69DAF /* NewPlaceTableViewController.swift */,
+				1FF2B51623D3BAD900F7F88D /* MapViewController.swift */,
 				1F7637A323CBD68E00B69DAF /* PlaceModel.swift */,
 				1FFDD7EA23C5F3370091BA7C /* Main.storyboard */,
 				1FFDD7ED23C5F33B0091BA7C /* Assets.xcassets */,
+				1F21251523D0AD0D001F4FEB /* RatingControl.swift */,
 				1FFDD7EF23C5F33B0091BA7C /* LaunchScreen.storyboard */,
 				1FFDD7F223C5F33B0091BA7C /* Info.plist */,
 			);
@@ -222,6 +228,8 @@
 				1FFDD7E923C5F3370091BA7C /* MainViewController.swift in Sources */,
 				1FFDD7E523C5F3370091BA7C /* AppDelegate.swift in Sources */,
 				1F6F62C123CD5E7F002061BF /* StorageManager.swift in Sources */,
+				1FF2B51723D3BAD900F7F88D /* MapViewController.swift in Sources */,
+				1F21251623D0AD0D001F4FEB /* RatingControl.swift in Sources */,
 				1F7637A423CBD68E00B69DAF /* PlaceModel.swift in Sources */,
 				1F7637A223C8C83900B69DAF /* MainTableViewCell.swift in Sources */,
 				1FFDD7E723C5F3370091BA7C /* SceneDelegate.swift in Sources */,
